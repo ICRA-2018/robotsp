@@ -1,0 +1,46 @@
+name: robotsp
+
+base:
+  ubuntu: 16.04
+  ros: kinetic-ros-base
+  opengl: runtime
+
+apt:
+  - qt5-default
+  - libqt5svg5-dev 
+  - git 
+  - subversion
+
+pip:
+  - sympy==0.7.1
+
+build: catkin_make
+
+source:
+  - name: openrave
+    repo: https://github.com/rdiankov/openrave.git
+    depends:
+      - libassimp-dev 
+      - libxml2-dev 
+      - libboost-dev
+      - libboost-python-dev
+      - libeigen3-dev
+      - libbullet-dev
+      - libode-dev
+      - liblapack-dev
+      - python-scipy
+      - libfcl-dev
+      - "collada-dom2.4-dp*"
+      - libsoqt4-dev
+      - coreutils
+      - nano
+    build: cmake
+
+  - name: openrave_catkin
+    repo: https://github.com/crigroup/openrave_catkin.git
+    build: catkin_make
+
+  - name: raveutils
+    repo: https://github.com/crigroup/raveutils.git
+    build: catkin_make
+
